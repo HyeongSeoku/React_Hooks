@@ -11,7 +11,7 @@ const useTitle = initalTitle =>{
   useEffect(updateTitle,[title]);
   return setTitle;
 
-}
+};
 
 function App() {
   const titleUpdater = useTitle("Loading ...");
