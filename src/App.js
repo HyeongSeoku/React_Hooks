@@ -2,20 +2,25 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 
+const useTitle = initalTitle =>{
+  const [title , setTitle] = useState(initalTitle);
+  const updateTitle = () =>{
+    const htmlTitle = document.querySelector("title");
+    htmlTitle.innerText = title;
+  };
+  useEffect(updateTitle,[title]);
+  return setTitle;
+
+}
 
 function App() {
-
-  const sayHello = ()=> console.log("hello");
-
-  const [number,setNumber] = useState(0);
-  const [Anumber,setAnumber] = useState(0);
-
-  useEffect(sayHello,[number]);
+  const titleUpdater = useTitle("Loading ...");
+  setTimeout(()=> titleUpdater("Home"),5000);
   return (
+    
     <div>
       <h2>Hello</h2>
-      <button onClick={()=>setNumber(number +1)}>number:{number}</button>
-      <button onClick={()=>setAnumber(Anumber +1)}>Anumber:{Anumber}</button>
+      
     </div>
   );
 }
